@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { navLinks, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import { buttonClass } from "@/components/ui/Button";
+import { BrandMark } from "@/components/layout/BrandMark";
 import { CloseIcon, FileTextIcon, GitHubIcon, MenuIcon } from "@/components/ui/icons";
 
 export function Navbar() {
@@ -36,17 +37,8 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 sm:px-8">
-        <Link
-          href="/"
-          className="group flex items-center gap-2.5"
-          aria-label={`${siteConfig.name} — home`}
-        >
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-cyan-300 to-indigo-500 text-sm font-bold text-ink shadow-[0_4px_20px_-4px_rgba(34,211,238,0.6)]">
-            CK
-          </span>
-          <span className="hidden text-sm font-semibold tracking-tight text-fg sm:block">
-            {siteConfig.name}
-          </span>
+        <Link href="/" className="flex items-center" aria-label={`${siteConfig.name} — home`}>
+          <BrandMark size={38} nameClassName="hidden sm:block" eager />
         </Link>
 
         {/* Desktop links */}

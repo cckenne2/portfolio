@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "Production AI and data-engineering systems plus independent projects — led by the Product Intelligence Engine, a full-stack RAG application approved for production.",
+  alternates: { canonical: "/projects" },
 };
 
 const caseStudyHref = `/projects/${flagship.slug}`;

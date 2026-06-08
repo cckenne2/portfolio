@@ -90,6 +90,12 @@ body {
     background-size: 58px 58px;
   }
 
+  /* Cyan halo that follows the logo's alpha silhouette (not a box). */
+  .logo-glow {
+    filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.5))
+      drop-shadow(0 0 13px rgba(56, 189, 248, 0.3));
+  }
+
   /* Frosted glass card surface. */
   .glass {
     background: linear-gradient(

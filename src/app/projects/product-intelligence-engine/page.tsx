@@ -25,6 +25,7 @@ import { flagship, type ChallengeItem } from "@/lib/data";
 export const metadata: Metadata = {
   title: flagship.name,
   description: flagship.summary,
+  alternates: { canonical: `/projects/${flagship.slug}` },
   openGraph: {
     title: `${flagship.name} — Case Study`,
     description: flagship.summary,
