@@ -9,11 +9,13 @@ import { cn } from "@/lib/cn";
  */
 export function CountUp({
   to,
+  prefix = "",
   suffix = "",
   duration = 1500,
   className,
 }: {
   to: number;
+  prefix?: string;
   suffix?: string;
   duration?: number;
   className?: string;
@@ -59,7 +61,8 @@ export function CountUp({
 
   return (
     <span ref={ref} className={cn("tabular-nums", className)}>
-      {Math.round(value)}
+      {prefix}
+      {Math.round(value).toLocaleString("en-US")}
       {suffix}
     </span>
   );

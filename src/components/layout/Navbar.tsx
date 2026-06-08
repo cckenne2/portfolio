@@ -73,13 +73,15 @@ export function Navbar() {
           >
             <GitHubIcon />
           </a>
-          <Link
+          <a
             href={siteConfig.links.resume}
+            target="_blank"
+            rel="noreferrer"
             className={cn(buttonClass("secondary", "md"), "hidden md:inline-flex")}
           >
             <FileTextIcon className="h-4 w-4" />
             Resume
-          </Link>
+          </a>
 
           {/* Mobile menu toggle */}
           <button
@@ -114,14 +116,16 @@ export function Navbar() {
             </li>
           ))}
           <li className="mt-2 flex items-center gap-3 px-1">
-            <Link
+            <a
               href={siteConfig.links.resume}
+              target="_blank"
+              rel="noreferrer"
               onClick={() => setMenuOpen(false)}
               className={cn(buttonClass("secondary", "md"), "flex-1")}
             >
               <FileTextIcon className="h-4 w-4" />
               Resume
-            </Link>
+            </a>
             <a
               href={siteConfig.links.github}
               target="_blank"

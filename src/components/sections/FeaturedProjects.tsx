@@ -3,8 +3,9 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { Reveal } from "@/components/visuals/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
-import { ArrowRightIcon } from "@/components/ui/icons";
+import { GitHubIcon } from "@/components/ui/icons";
 import { projects } from "@/lib/data";
+import { siteConfig } from "@/lib/site";
 
 export function FeaturedProjects() {
   const caseStudies = projects.filter((p) => p.category === "Professional Case Study");
@@ -15,14 +16,13 @@ export function FeaturedProjects() {
       <Container className="flex flex-col gap-14">
         <Reveal>
           <SectionHeading
-            eyebrow="Featured Work"
+            eyebrow="Selected Work"
             title={
               <>
-                Systems that{" "}
-                <span className="text-gradient">ship and scale</span>
+                More systems, <span className="text-gradient">start to finish</span>
               </>
             }
-            description="A selection of production AI and data work, plus public projects. Case studies describe employer-owned systems at a high level — no proprietary source or data is shown."
+            description="Beyond the flagship RAG system: production AI and data-engineering work, plus public projects. Case studies describe employer-owned systems at a high level — no proprietary source or data is shown."
           />
         </Reveal>
 
@@ -30,11 +30,11 @@ export function FeaturedProjects() {
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-3">
             <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-fg">
-              Professional Case Studies
+              Production Case Studies
             </h3>
             <span className="h-px flex-1 bg-gradient-to-r from-line to-transparent" />
           </div>
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {caseStudies.map((project, i) => (
               <Reveal key={project.slug} delay={i * 80}>
                 <ProjectCard project={project} />
@@ -47,7 +47,7 @@ export function FeaturedProjects() {
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-3">
             <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-fg">
-              Open Source &amp; Side Projects
+              Open Source &amp; Independent Projects
             </h3>
             <span className="h-px flex-1 bg-gradient-to-r from-line to-transparent" />
           </div>
@@ -61,9 +61,9 @@ export function FeaturedProjects() {
         </div>
 
         <Reveal className="flex justify-center">
-          <ButtonLink href="/projects" variant="secondary" size="md">
-            Explore all projects
-            <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          <ButtonLink href={siteConfig.links.github} variant="secondary" size="md">
+            <GitHubIcon className="h-4 w-4" />
+            See more on GitHub
           </ButtonLink>
         </Reveal>
       </Container>

@@ -1,26 +1,77 @@
 /**
- * Content for the homepage. Kept separate from presentation so copy and
- * numbers can be edited without touching component code.
+ * Homepage content, sourced from Caleb Kennedy's résumé. Kept separate from
+ * presentation so copy and numbers can be edited without touching components.
  *
- * The metrics, project descriptions, and experience entries are written to be
- * accurate to the brief while avoiding any proprietary detail. Numbers tied to
- * real work (42K+ enriched, 20K+ deduplicated) are highlighted; the rest are
- * safe placeholders Caleb can refine.
+ * Every metric and claim here is résumé-backed. Professional work is described
+ * at a public, high level only — no proprietary data, source, customer
+ * information, or internal architecture is exposed.
  */
 
 export type Metric = {
   value: number;
-  /** Rendered after the animated number, e.g. "K+", "%", "+". */
+  /** Rendered before the animated number, e.g. "<". */
+  prefix?: string;
+  /** Rendered after the animated number, e.g. "+", "%", "s". */
   suffix?: string;
   label: string;
 };
 
 export const metrics: Metric[] = [
-  { value: 42, suffix: "K+", label: "Catalog records enriched by LLM pipelines" },
-  { value: 20, suffix: "K+", label: "Duplicate records resolved with DBSCAN" },
-  { value: 6, suffix: "", label: "Production AI & data systems shipped" },
-  { value: 100, suffix: "%", label: "End-to-end ownership, data to deploy" },
+  {
+    value: 42000,
+    suffix: "+",
+    label: "Product records enriched by an LLM pipeline — in 3 weeks",
+  },
+  {
+    value: 20000,
+    suffix: "+",
+    label: "Customer records deduplicated at 90% accuracy",
+  },
+  {
+    value: 7,
+    prefix: "<",
+    suffix: "s",
+    label: "Per-product RAG recommendation, replacing manual catalog lookup",
+  },
+  {
+    value: 3,
+    suffix: "+",
+    label: "Data sources unified into executive Power BI dashboards",
+  },
 ];
+
+/**
+ * The flagship case study — given its own dedicated, visually prominent section.
+ * Public summary of the Product Recommendation RAG system (internal codename
+ * "Super-Seller"); no confidential detail.
+ */
+export type ArchStage = { tech: string; role: string };
+export type FlagshipStat = { value: string; label: string };
+
+export const flagship = {
+  name: "Product Recommendation RAG System",
+  badges: ["Production AI", "Executive-approved", "Built solo 0 → 1"],
+  problem:
+    "Sales reps matched customers to products through a slow, manual catalog lookup — searching a large specialty-chemical catalog by hand on every quote. It was time-consuming, hard to scale, and easy to get wrong.",
+  solution:
+    "I initiated, designed, and built a full-stack Retrieval-Augmented Generation (RAG) application that returns relevant product recommendations in under 7 seconds. It pairs semantic vector search over the product catalog with an LLM to deliver fast, guided suggestions — turning a manual lookup into an instant experience.",
+  recognition:
+    "Demoed live to the CEO and CFO, the system earned approval for production deployment and was formally recognized in the company's Q1 2026 IT review for its initiative and completion.",
+  architecture: [
+    { tech: "React", role: "Frontend UI" },
+    { tech: "Python", role: "Backend / API" },
+    { tech: "Pinecone", role: "Vector retrieval" },
+    { tech: "Gemini API", role: "LLM generation" },
+  ] as ArchStage[],
+  stack: ["React", "Python", "Pinecone", "Gemini API", "RAG", "Vector Search"],
+  stats: [
+    { value: "< 7s", label: "Time to a recommendation, vs. manual lookup" },
+    { value: "5+ hrs/wk", label: "Projected time saved per sales rep" },
+    { value: "CEO + CFO", label: "Live demo → approved for production" },
+    { value: "0 → 1", label: "Initiated, designed & built end-to-end" },
+  ] as FlagshipStat[],
+  note: "Public case-study summary. No proprietary data, customer information, source code, or internal architecture is shown.",
+};
 
 export type ProjectCategory = "Professional Case Study" | "Public Project";
 
@@ -33,37 +84,26 @@ export type Project = {
   /** Short impact statement; rendered in the accent color. */
   impact: string;
   stack: string[];
-  /** Where the card's primary action points. */
-  href: string;
-  /** Label for the primary action. */
-  cta: string;
-  /** Whether the source/details are confidential (employer-owned). */
+  /** Optional external link (public projects). Confidential work omits this. */
+  href?: string;
+  /** Label for the link, when present. */
+  cta?: string;
+  /** Employer-owned work: shows a lock and a "summary only" footer, no link. */
   confidential?: boolean;
 };
 
+const githubProfile = "https://github.com/cckenne2";
+
 export const projects: Project[] = [
-  {
-    slug: "super-seller-rag",
-    name: "Super-Seller RAG Application",
-    category: "Professional Case Study",
-    tagline:
-      "A retrieval-augmented assistant that turns scattered internal knowledge into instant, source-cited answers.",
-    impact: "Cut answer-lookup from minutes to seconds with grounded responses.",
-    stack: ["Python", "LLMs", "RAG", "Vector Search", "FastAPI"],
-    href: "/projects",
-    cta: "Read case study",
-    confidential: true,
-  },
   {
     slug: "product-enrichment-pipeline",
     name: "LLM Product Enrichment Pipeline",
     category: "Professional Case Study",
     tagline:
-      "A production pipeline that generates structured, schema-validated attributes for 42K+ catalog records.",
-    impact: "Enriched 42,000+ records, replacing slow manual tagging.",
-    stack: ["Python", "LLMs", "Batch Inference", "Data Validation", "ETL"],
-    href: "/projects",
-    cta: "Read case study",
+      "An OpenAI-powered system that generates structured attributes for 42,000+ product records.",
+    impact:
+      "Replaced 12+ months of projected manual research with a 3-week run; cut the data-entry backlog by over 95%.",
+    stack: ["Python", "OpenAI API", "NLP", "Data Validation", "ETL"],
     confidential: true,
   },
   {
@@ -71,23 +111,21 @@ export const projects: Project[] = [
     name: "DBSCAN Deduplication Pipeline",
     category: "Professional Case Study",
     tagline:
-      "Density-based clustering that resolves duplicate entities across 20K+ noisy records.",
-    impact: "Collapsed 20,000+ records into clean, canonical entities.",
-    stack: ["Python", "scikit-learn", "DBSCAN", "Embeddings", "Pandas"],
-    href: "/projects",
-    cta: "Read case study",
+      "A production ML pipeline that resolves duplicate customer records across CRM and ERP systems.",
+    impact:
+      "Deduplicated 20,000+ records at 90% accuracy, eliminating months of manual reconciliation.",
+    stack: ["Python", "scikit-learn", "DBSCAN", "Clustering", "Pandas"],
     confidential: true,
   },
   {
     slug: "netsuite-data-engineering",
-    name: "NetSuite Data Engineering",
+    name: "NetSuite Data Engineering & ERP Migration",
     category: "Professional Case Study",
     tagline:
-      "ETL, data warehousing, and migration work that makes operational NetSuite data analytics-ready.",
-    impact: "Built reliable pipelines and a warehouse layer powering analytics.",
-    stack: ["SQL", "ETL", "Data Warehouse", "NetSuite", "Python"],
-    href: "/projects",
-    cta: "Read case study",
+      "ETL, data-warehouse, and mapping work powering a mission-critical 2-year ERP-to-NetSuite migration.",
+    impact:
+      "Built SQL ETL with regex + multi-currency logic and an auto-updating mapping ETL feeding executive Power BI dashboards.",
+    stack: ["SQL", "ETL", "NetSuite", "Data Warehouse", "Power BI", "Visual Studio"],
     confidential: true,
   },
   {
@@ -95,30 +133,30 @@ export const projects: Project[] = [
     name: "PromptStudio",
     category: "Public Project",
     tagline:
-      "A workspace for designing, testing, and versioning LLM prompts with side-by-side comparisons.",
-    impact: "Faster prompt iteration with reproducible experiments.",
-    stack: ["Next.js", "TypeScript", "LLM APIs", "Tailwind CSS"],
-    href: "#projects",
-    cta: "View project",
+      "A full-stack prompt-engineering platform to create, test, and version LLM prompts with real-time evaluation.",
+    impact: "Automated quality scoring across prompt structure, clarity, and length.",
+    stack: ["React", "FastAPI", "Gemini API", "LLM Evaluation"],
+    href: githubProfile,
+    cta: "View on GitHub",
   },
   {
     slug: "pixelforge",
     name: "PixelForge",
     category: "Public Project",
     tagline:
-      "A browser-based creative tool for generating and manipulating images on the canvas.",
-    impact: "Real-time, GPU-friendly rendering in the browser.",
-    stack: ["TypeScript", "React", "Canvas", "WebGL"],
-    href: "#projects",
-    cta: "View project",
+      "A PyTorch image super-resolution model (CNN) that upscales low-resolution images.",
+    impact: "Custom loss functions and training pipelines aimed at practical computer-vision use.",
+    stack: ["Python", "PyTorch", "CNN", "Computer Vision"],
+    href: githubProfile,
+    cta: "View on GitHub",
   },
 ];
 
 export type ExperienceEntry = {
   role: string;
-  /** Short track label, e.g. "AI / ML". */
+  org: string;
+  /** Short track label, e.g. "Applied AI · Data Eng". */
   track: string;
-  /** Stage or period label; placeholder until real dates are added. */
   period: string;
   summary: string;
   highlights: string[];
@@ -126,39 +164,42 @@ export type ExperienceEntry = {
 
 export const experience: ExperienceEntry[] = [
   {
-    role: "AI/ML Engineer",
-    track: "Applied AI",
-    period: "Current focus",
+    role: "NetSuite Data Engineer · AI/ML Engineer",
+    org: "Krayden, Inc. · Denver, CO",
+    track: "Applied AI · Data Eng",
+    period: "Jul 2025 – Present",
     summary:
-      "Design and ship LLM applications and RAG systems, owning them from data and prompts through deployment.",
+      "Full-time contract engineer at a B2B specialty-chemical distributor, owning AI and data systems across a mission-critical 2-year ERP-to-NetSuite migration.",
     highlights: [
-      "Production RAG assistant with cited answers",
-      "LLM enrichment across 42K+ records",
-      "Prompt design & evaluation tooling",
+      "Executive-approved RAG application",
+      "LLM enrichment of 42,000+ records",
+      "DBSCAN dedup of 20,000+ records",
+      "SQL ETL → executive Power BI",
     ],
   },
   {
-    role: "Data Engineer",
-    track: "Data Platform",
-    period: "Recent work",
+    role: "Independent AI Development",
+    org: "Self-directed projects",
+    track: "AI / ML",
+    period: "2024 – Present",
     summary:
-      "Build ETL pipelines, warehouse models, and migrations that turn raw operational data into trustworthy analytics.",
+      "Building AI tools end-to-end — a deep-learning image super-resolution model and a full-stack LLM prompt-evaluation platform.",
     highlights: [
-      "NetSuite ETL & data warehousing",
-      "DBSCAN deduplication at scale",
-      "Monitored, reliable pipelines",
+      "PromptStudio — LLM prompt evaluation",
+      "PixelForge — PyTorch super-resolution",
     ],
   },
   {
-    role: "Software Engineer",
-    track: "Full-Stack",
-    period: "Foundation",
+    role: "B.S., Data Science",
+    org: "Arizona State University",
+    track: "Education",
+    period: "Dec 2024",
     summary:
-      "Full-stack development across modern web stacks and APIs, with an emphasis on shipping production software.",
+      "Data Science with an emphasis in Business Analysis / IT / Networking. Capstone: civil-unrest predictive modeling on large economic datasets.",
     highlights: [
-      "TypeScript & Next.js applications",
-      "REST APIs and services",
-      "From prototype to production",
+      "Random Forest · 73% accuracy · 0.83 AUC",
+      "200,000+ records analyzed",
+      "Led a team of 4",
     ],
   },
 ];
@@ -175,39 +216,42 @@ export const skillGroups: SkillGroup[] = [
       "LLMs",
       "RAG",
       "Prompt Engineering",
+      "OpenAI API",
+      "Gemini API",
+      "Pinecone",
       "Embeddings",
-      "Vector Databases",
       "DBSCAN / Clustering",
+      "PyTorch",
       "scikit-learn",
-      "Model Evaluation",
+      "NLP",
     ],
   },
   {
     title: "Data Engineering",
     items: [
       "ETL / ELT",
-      "Data Warehousing",
       "NetSuite",
+      "ERP Migration",
       "SQL",
-      "Pipeline Orchestration",
-      "Data Validation",
+      "Data Warehousing",
+      "Power BI",
+      "Data Mapping",
+      "Regex Parsing",
       "Pandas",
     ],
   },
   {
-    title: "Software & Backend",
-    items: [
-      "Python",
-      "TypeScript",
-      "FastAPI",
-      "Node.js",
-      "REST APIs",
-      "PostgreSQL",
-      "Docker",
-    ],
+    title: "Software Engineering",
+    items: ["Python", "React", "FastAPI", "REST APIs", "Microservices", "Visual Studio", "Git"],
   },
   {
-    title: "Frontend & Delivery",
-    items: ["React", "Next.js", "Tailwind CSS", "Git", "CI/CD", "Vercel"],
+    title: "Foundations",
+    items: [
+      "Distributed Systems",
+      "System Performance",
+      "Responsible AI",
+      "Executive Communication",
+      "Cross-functional Collaboration",
+    ],
   },
 ];

@@ -57,13 +57,17 @@ export function ButtonLink({
   const classes = buttonClass(variant, size, className);
   const isHttp = href.startsWith("http") || external;
   const isMail = href.startsWith("mailto:");
+  // Static assets served from /public (e.g. the résumé PDF) should open
+  // directly in a new tab rather than going through the client router.
+  const isFile = href.endsWith(".pdf");
+  const opensNewTab = isHttp || isFile;
 
-  if (isHttp || isMail) {
+  if (isHttp || isMail || isFile) {
     return (
       <a
         href={href}
         className={classes}
-        {...(isHttp ? { target: "_blank", rel: "noreferrer" } : {})}
+        {...(opensNewTab ? { target: "_blank", rel: "noreferrer" } : {})}
         {...rest}
       >
         {children}

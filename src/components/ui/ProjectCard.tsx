@@ -1,16 +1,14 @@
-import Link from "next/link";
 import type { Project } from "@/lib/data";
 import { Chip } from "@/components/ui/Chip";
-import { ArrowUpRightIcon, LockIcon, ArrowRightIcon } from "@/components/ui/icons";
+import { ArrowUpRightIcon, LockIcon } from "@/components/ui/icons";
 
 /**
- * Glass project card with a hover glow ring. Professional case studies show a
- * "confidential" lock to signal employer-owned, non-public source.
+ * Glass project card with a hover glow ring.
+ * - Public projects link out (e.g. GitHub).
+ * - Confidential/employer-owned projects show a lock and a "summary only"
+ *   footer instead of a link, so there are no disappointing dead-ends.
  */
 export function ProjectCard({ project }: { project: Project }) {
-  const isExternal = project.href.startsWith("http");
-  const isInPageAnchor = project.href.startsWith("#");
-
   return (
     <article className="ring-glow group relative flex h-full flex-col gap-5 rounded-3xl glass p-6 transition-transform duration-300 hover:-translate-y-1 sm:p-7">
       <div className="flex items-center justify-between gap-3">
@@ -42,52 +40,23 @@ export function ProjectCard({ project }: { project: Project }) {
         ))}
       </ul>
 
-      <div className="mt-auto pt-2">
-        <ProjectAction href={project.href} cta={project.cta} external={isExternal} anchor={isInPageAnchor} />
+      <div className="mt-auto border-t border-line/50 pt-4">
+        {project.href ? (
+          <a
+            href={project.href}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-fg transition-colors hover:text-accent"
+          >
+            {project.cta ?? "View project"}
+            <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </a>
+        ) : (
+          <span className="text-xs leading-relaxed text-faint">
+            Employer-owned — public summary only.
+          </span>
+        )}
       </div>
     </article>
-  );
-}
-
-function ProjectAction({
-  href,
-  cta,
-  external,
-  anchor,
-}: {
-  href: string;
-  cta: string;
-  external: boolean;
-  anchor: boolean;
-}) {
-  const className =
-    "inline-flex items-center gap-1.5 text-sm font-medium text-fg transition-colors hover:text-accent";
-  const content = (
-    <>
-      {cta}
-      {external ? (
-        <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-      ) : (
-        <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-      )}
-    </>
-  );
-
-  if (external || anchor) {
-    return (
-      <a
-        href={href}
-        className={className}
-        {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-      >
-        {content}
-      </a>
-    );
-  }
-
-  return (
-    <Link href={href} className={className}>
-      {content}
-    </Link>
   );
 }

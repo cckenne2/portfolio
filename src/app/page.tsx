@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { ImpactMetrics } from "@/components/sections/ImpactMetrics";
+import { FlagshipProject } from "@/components/sections/FlagshipProject";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
 import { ExperienceSnapshot } from "@/components/sections/ExperienceSnapshot";
 import { SkillsOverview } from "@/components/sections/SkillsOverview";
@@ -10,6 +11,7 @@ export default function Home() {
     <>
       <Hero />
       <ImpactMetrics />
+      <FlagshipProject />
       <FeaturedProjects />
       <ExperienceSnapshot />
       <SkillsOverview />

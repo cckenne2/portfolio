@@ -1,17 +1,8 @@
-import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/layout/PagePlaceholder";
+import { redirect } from "next/navigation";
+import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Resume",
-  description: "Caleb Kennedy's resume — AI/ML Engineer.",
-};
-
+// The résumé now lives as a static PDF in /public. Keep the /resume URL working
+// by redirecting it to the file, so old links and direct visits resolve.
 export default function ResumePage() {
-  return (
-    <PagePlaceholder
-      eyebrow="Resume"
-      title="Resume coming soon"
-      description="A downloadable resume will be available here shortly. In the meantime, reach out and I'll happily send a copy."
-    />
-  );
+  redirect(siteConfig.links.resume);
 }

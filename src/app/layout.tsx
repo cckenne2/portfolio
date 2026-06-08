@@ -25,8 +25,12 @@ export const metadata: Metadata = {
   keywords: [
     "AI Engineer",
     "ML Engineer",
+    "Data Engineer",
+    "Python Software Engineer",
     "LLM",
     "RAG",
+    "NetSuite",
+    "ETL",
     "Data Engineering",
     "Machine Learning",
     "Caleb Kennedy",
