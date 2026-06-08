@@ -9,7 +9,7 @@ export const siteConfig = {
   pillars: ["AI Engineer", "Data Engineer", "Python Software Engineer"],
   title: "Caleb Kennedy — AI/ML Engineer",
   description:
-    "AI/ML Engineer building production AI and data systems — an executive-approved RAG application, an LLM enrichment pipeline across 42,000+ records, and ERP-scale data engineering with Python, SQL, and modern AI frameworks.",
+    "AI/ML Engineer building production AI and data systems — the executive-approved Product Intelligence Engine (a full-stack RAG application), an LLM enrichment pipeline across 42,000+ records, and ERP-scale data engineering with Python, SQL, and modern AI frameworks.",
   url: "https://calebkennedy.me",
   location: "Denver, CO",
   email: "contact@calebkennedy.me",
@@ -21,9 +21,11 @@ export const siteConfig = {
   },
 } as const;
 
+// Hrefs are absolute (prefixed with "/") so the nav works from sub-pages too,
+// not just the homepage. On the homepage these resolve to in-page anchors.
 export const navLinks = [
-  { label: "Projects", href: "#flagship" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+  { label: "Projects", href: "/projects" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Contact", href: "/#contact" },
 ] as const;

@@ -1,13 +1,16 @@
 import { Container } from "@/components/ui/Container";
 import { Chip } from "@/components/ui/Chip";
 import { Reveal } from "@/components/visuals/Reveal";
-import { ArrowRightIcon, LockIcon, SparklesIcon } from "@/components/ui/icons";
+import { ButtonLink } from "@/components/ui/Button";
+import { ArrowRightIcon, SparklesIcon } from "@/components/ui/icons";
 import { flagship } from "@/lib/data";
 
+const caseStudyHref = `/projects/${flagship.slug}`;
+
 /**
- * Dedicated, visually prominent case study for the flagship RAG system.
- * Intentionally NOT the same card as everything else — this is the page's
- * centerpiece and the strongest recruiter signal ("built a real production RAG").
+ * Homepage teaser for the flagship case study. It summarizes the Product
+ * Intelligence Engine and drives recruiters into the dedicated case-study page,
+ * which is the portfolio's strongest asset.
  */
 export function FlagshipProject() {
   return (
@@ -21,29 +24,35 @@ export function FlagshipProject() {
 
             <div className="relative flex flex-col gap-8">
               {/* Header */}
-              <div className="flex flex-col gap-4">
-                <span className="inline-flex w-fit items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-accent">
-                  <SparklesIcon className="h-4 w-4" />
-                  Flagship Project
-                </span>
-                <h2 className="text-balance text-3xl font-semibold tracking-tight text-fg sm:text-4xl md:text-5xl">
-                  {flagship.name}
-                </h2>
-                <div className="flex flex-wrap gap-2">
-                  {flagship.badges.map((badge) => (
-                    <span
-                      key={badge}
-                      className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent"
-                    >
-                      {badge}
-                    </span>
-                  ))}
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                <div className="flex flex-col gap-3">
+                  <span className="inline-flex w-fit items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-accent">
+                    <SparklesIcon className="h-4 w-4" />
+                    Flagship Project
+                  </span>
+                  <h2 className="text-balance text-3xl font-semibold tracking-tight text-fg sm:text-4xl md:text-5xl">
+                    {flagship.name}
+                  </h2>
+                  <p className="max-w-xl text-pretty text-muted">{flagship.tagline}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {flagship.badges.map((badge) => (
+                      <span
+                        key={badge}
+                        className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent"
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+                <ButtonLink href={caseStudyHref} variant="primary" size="md" className="shrink-0">
+                  Read the case study
+                  <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </ButtonLink>
               </div>
 
-              {/* Body: narrative + architecture */}
+              {/* Body: narrative + condensed stack */}
               <div className="grid gap-8 lg:grid-cols-5">
-                {/* Narrative */}
                 <div className="flex flex-col gap-6 lg:col-span-3">
                   <div>
                     <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-faint">
@@ -67,29 +76,24 @@ export function FlagshipProject() {
                   </div>
                 </div>
 
-                {/* Architecture diagram */}
+                {/* Condensed stack */}
                 <div className="flex flex-col gap-4 lg:col-span-2">
                   <h3 className="text-sm font-semibold uppercase tracking-wider text-faint">
-                    Architecture (high level)
+                    Core stack
                   </h3>
                   <div className="flex flex-col gap-2 rounded-2xl border border-line/70 bg-ink/40 p-4">
-                    {flagship.architecture.map((stage, i) => (
-                      <div key={stage.tech} className="flex flex-col gap-2">
-                        <div className="flex items-center gap-3 rounded-xl border border-line/60 bg-white/[0.03] px-4 py-3">
-                          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-cyan-300/90 to-indigo-400/90 text-xs font-bold text-ink">
-                            {i + 1}
-                          </span>
-                          <span className="flex flex-col">
-                            <span className="text-sm font-semibold text-fg">{stage.tech}</span>
-                            <span className="text-xs text-faint">{stage.role}</span>
-                          </span>
-                        </div>
-                        {i < flagship.architecture.length - 1 && (
-                          <ArrowRightIcon
-                            className="h-4 w-4 rotate-90 self-center text-accent/70"
-                            aria-hidden="true"
-                          />
-                        )}
+                    {flagship.coreTech.map((stage, i) => (
+                      <div
+                        key={stage.tech}
+                        className="flex items-center gap-3 rounded-xl border border-line/60 bg-white/[0.03] px-4 py-3"
+                      >
+                        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-cyan-300/90 to-indigo-400/90 text-xs font-bold text-ink">
+                          {i + 1}
+                        </span>
+                        <span className="flex flex-col">
+                          <span className="text-sm font-semibold text-fg">{stage.tech}</span>
+                          <span className="text-xs text-faint">{stage.role}</span>
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -115,11 +119,14 @@ export function FlagshipProject() {
                 ))}
               </dl>
 
-              {/* Confidentiality note */}
-              <p className="flex items-start gap-2 text-xs leading-relaxed text-faint">
-                <LockIcon className="mt-0.5 h-4 w-4 shrink-0" />
-                {flagship.note}
-              </p>
+              {/* Footer: note + CTA */}
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <p className="max-w-md text-xs leading-relaxed text-faint">{flagship.note}</p>
+                <ButtonLink href={caseStudyHref} variant="secondary" size="md" className="shrink-0">
+                  Explore the full case study
+                  <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </ButtonLink>
+              </div>
             </div>
           </div>
         </Reveal>

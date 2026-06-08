@@ -27,13 +27,13 @@ export function Footer() {
 
         <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm text-muted transition-colors hover:text-fg"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 

@@ -40,37 +40,159 @@ export const metrics: Metric[] = [
   },
 ];
 
-/**
- * The flagship case study — given its own dedicated, visually prominent section.
- * Public summary of the Product Recommendation RAG system (internal codename
- * "Super-Seller"); no confidential detail.
- */
-export type ArchStage = { tech: string; role: string };
+export type ArchKind =
+  | "user"
+  | "frontend"
+  | "api"
+  | "search"
+  | "vector"
+  | "llm"
+  | "output";
+export type ArchStage = { kind: ArchKind; tech: string; role: string; detail: string };
 export type FlagshipStat = { value: string; label: string };
+export type TitledItem = { title: string; body: string };
+export type ChallengeItem = TitledItem & { icon: "grounding" | "retrieval" | "latency" | "prompt" | "ranking" | "production" };
 
+/**
+ * The flagship case study — the "Product Intelligence Engine".
+ *
+ * This system was independently designed and built by Caleb; the code is his.
+ * It solved a real business problem and was demonstrated live to executive
+ * leadership (CEO & CFO) and approved for production. Business-specific details,
+ * datasets, and internal processes are intentionally kept confidential.
+ */
 export const flagship = {
-  name: "Product Recommendation RAG System",
-  badges: ["Production AI", "Executive-approved", "Built solo 0 → 1"],
+  slug: "product-intelligence-engine",
+  name: "Product Intelligence Engine",
+  tagline: "Retrieval-augmented product recommendations, built end to end.",
+  summary:
+    "An independently built, full-stack RAG application that turns a slow manual product-lookup process into instant, grounded recommendations — demonstrated live to executive leadership and approved for production.",
+  badges: ["Full-stack RAG", "Executive-approved", "Independently built"],
   problem:
-    "Sales reps matched customers to products through a slow, manual catalog lookup — searching a large specialty-chemical catalog by hand on every quote. It was time-consuming, hard to scale, and easy to get wrong.",
+    "Finding the right product for a customer meant working through a large catalog by hand — a slow, repetitive lookup that didn't scale and was easy to get wrong. The effort added up on every request and pulled time away from actually helping customers.",
   solution:
-    "I initiated, designed, and built a full-stack Retrieval-Augmented Generation (RAG) application that returns relevant product recommendations in under 7 seconds. It pairs semantic vector search over the product catalog with an LLM to deliver fast, guided suggestions — turning a manual lookup into an instant experience.",
+    "I independently designed and built a full-stack Retrieval-Augmented Generation (RAG) application that returns relevant product recommendations in under seven seconds. It pairs semantic vector search over the catalog with a grounded language model, turning a manual lookup into an instant, guided experience.",
   recognition:
-    "Demoed live to the CEO and CFO, the system earned approval for production deployment and was formally recognized in the company's Q1 2026 IT review for its initiative and completion.",
+    "Demonstrated live to executive leadership — the CEO and CFO — the system earned approval for production deployment and was recognized in a Q1 2026 IT review for its initiative and completion.",
+  // High-level pipeline shown on the dedicated case-study page.
   architecture: [
+    { kind: "user", tech: "User", role: "Sales rep", detail: "Enters a customer need or product query in plain language." },
+    { kind: "frontend", tech: "React Frontend", role: "Client UI", detail: "Captures the query and renders ranked, explainable recommendations." },
+    { kind: "api", tech: "Python API", role: "Orchestration", detail: "Coordinates the retrieval-augmented workflow end to end." },
+    { kind: "search", tech: "Embedding Search", role: "Semantic encoding", detail: "Encodes the query into a vector to match on meaning, not just keywords." },
+    { kind: "vector", tech: "Pinecone", role: "Vector retrieval", detail: "Returns the most semantically relevant product candidates from the index." },
+    { kind: "llm", tech: "Gemini", role: "Grounded generation", detail: "Reasons over the retrieved candidates to generate and justify recommendations." },
+    { kind: "output", tech: "Recommendation", role: "Response", detail: "Delivers ranked product recommendations in under seven seconds." },
+  ] as ArchStage[],
+  // Condensed four-node view used by the homepage teaser.
+  coreTech: [
     { tech: "React", role: "Frontend UI" },
     { tech: "Python", role: "Backend / API" },
     { tech: "Pinecone", role: "Vector retrieval" },
-    { tech: "Gemini API", role: "LLM generation" },
-  ] as ArchStage[],
-  stack: ["React", "Python", "Pinecone", "Gemini API", "RAG", "Vector Search"],
+    { tech: "Gemini", role: "LLM generation" },
+  ],
+  stack: ["React", "Python", "Pinecone", "Gemini", "RAG", "Vector Search"],
+  stackGroups: [
+    { title: "Frontend", items: ["React"] },
+    { title: "Backend", items: ["Python", "REST API"] },
+    {
+      title: "AI & Retrieval",
+      items: ["Gemini (LLM)", "Pinecone (Vector DB)", "Embeddings", "RAG", "Semantic Search"],
+    },
+    {
+      title: "Engineering Practices",
+      items: ["Prompt Design", "Relevance Ranking", "Grounding", "Latency Optimization"],
+    },
+  ] as SkillGroup[],
+  challenges: [
+    {
+      icon: "grounding",
+      title: "Grounding over guessing",
+      body: "Recommendations had to come from the real catalog, not the model's imagination. A retrieval-augmented design constrains the language model to actual retrieved candidates — the difference between a trustworthy tool and one that merely sounds plausible.",
+    },
+    {
+      icon: "retrieval",
+      title: "Semantic retrieval quality",
+      body: "People describe needs in their own words. Encoding queries and products as embeddings lets the system match on meaning, surfacing the right products even when the wording doesn't line up with the catalog.",
+    },
+    {
+      icon: "latency",
+      title: "A strict latency budget",
+      body: "To replace a manual lookup, the full retrieve-then-generate round trip had to feel instant. Balancing retrieval breadth against generation time kept the end-to-end workflow under seven seconds.",
+    },
+    {
+      icon: "prompt",
+      title: "Prompt design & grounding",
+      body: "The prompt structures how the model reasons over retrieved candidates, keeping output consistent, on-catalog, and explainable rather than free-associating.",
+    },
+    {
+      icon: "ranking",
+      title: "Relevance ranking",
+      body: "Returning the right products isn't enough — the most useful ones have to come first, so the top of the list is trustworthy at a glance.",
+    },
+    {
+      icon: "production",
+      title: "Built for production, not a demo",
+      body: "Designed around a real workflow: graceful handling of vague queries, predictable behavior, and an interface a non-technical user could trust in front of a customer.",
+    },
+  ] as ChallengeItem[],
   stats: [
-    { value: "< 7s", label: "Time to a recommendation, vs. manual lookup" },
-    { value: "5+ hrs/wk", label: "Projected time saved per sales rep" },
-    { value: "CEO + CFO", label: "Live demo → approved for production" },
-    { value: "0 → 1", label: "Initiated, designed & built end-to-end" },
+    { value: "< 7s", label: "End-to-end recommendation workflow" },
+    { value: "CEO + CFO", label: "Live executive demonstration" },
+    { value: "Approved", label: "Greenlit for production deployment" },
+    { value: "0 → 1", label: "Independently designed & built" },
   ] as FlagshipStat[],
-  note: "Public case-study summary. No proprietary data, customer information, source code, or internal architecture is shown.",
+  results: [
+    "Replaced a slow, manual product-lookup process with an instant, guided experience.",
+    "Returns ranked recommendations in under seven seconds, end to end.",
+    "Demonstrated live to executive leadership — the CEO and CFO.",
+    "Approved for production deployment following the demonstration.",
+    "Significantly reduced manual product-lookup effort.",
+    "Full-stack ownership: designed and built across React, Python, Pinecone, and Gemini.",
+  ],
+  lessons: [
+    {
+      title: "Retrieval is the product",
+      body: "Most of the quality came from improving what got retrieved — not from reaching for a bigger model.",
+    },
+    {
+      title: "Grounding earns trust",
+      body: "Constraining the model to real catalog data is what made the output dependable enough to show executives.",
+    },
+    {
+      title: "Latency is a feature",
+      body: "Sub-seven-second responses were what made the tool feel usable in the middle of a real conversation.",
+    },
+    {
+      title: "Design for the person using it",
+      body: "Fitting a real user's workflow mattered more than technical novelty — and it's what drove the approval.",
+    },
+  ] as TitledItem[],
+  roadmap: [
+    {
+      title: "Feedback loop",
+      body: "Capture accept/reject signals to continuously sharpen relevance ranking.",
+    },
+    {
+      title: "Evaluation harness",
+      body: "Automated relevance and grounding checks to catch quality regressions before they ship.",
+    },
+    {
+      title: "Caching & cost controls",
+      body: "Cache frequent queries and embeddings to trim both latency and API spend.",
+    },
+    {
+      title: "Sandboxed demo",
+      body: "A password-protected environment on synthetic data so the system can be explored safely.",
+    },
+  ] as TitledItem[],
+  demo: {
+    status: "In development",
+    headline: "Private by design",
+    body: "The Product Intelligence Engine runs on confidential business data, so it isn't publicly hosted. A guided walkthrough — or a sandboxed demo on synthetic data — is available on request.",
+    cta: "Request demo access",
+  },
+  note: "Independently designed and built by Caleb. Business-specific details and datasets are kept confidential.",
 };
 
 export type ProjectCategory = "Professional Case Study" | "Public Project";
@@ -171,7 +293,7 @@ export const experience: ExperienceEntry[] = [
     summary:
       "Full-time contract engineer at a B2B specialty-chemical distributor, owning AI and data systems across a mission-critical 2-year ERP-to-NetSuite migration.",
     highlights: [
-      "Executive-approved RAG application",
+      "Product Intelligence Engine (RAG)",
       "LLM enrichment of 42,000+ records",
       "DBSCAN dedup of 20,000+ records",
       "SQL ETL → executive Power BI",

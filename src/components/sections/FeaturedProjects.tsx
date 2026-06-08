@@ -3,9 +3,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { Reveal } from "@/components/visuals/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
-import { GitHubIcon } from "@/components/ui/icons";
+import { ArrowRightIcon } from "@/components/ui/icons";
 import { projects } from "@/lib/data";
-import { siteConfig } from "@/lib/site";
 
 export function FeaturedProjects() {
   const caseStudies = projects.filter((p) => p.category === "Professional Case Study");
@@ -22,7 +21,7 @@ export function FeaturedProjects() {
                 More systems, <span className="text-gradient">start to finish</span>
               </>
             }
-            description="Beyond the flagship RAG system: production AI and data-engineering work, plus public projects. Case studies describe employer-owned systems at a high level — no proprietary source or data is shown."
+            description="Beyond the flagship Product Intelligence Engine: production AI and data-engineering work, plus independent projects. Employer-owned systems are described at a high level — no proprietary source or data is shown."
           />
         </Reveal>
 
@@ -61,9 +60,9 @@ export function FeaturedProjects() {
         </div>
 
         <Reveal className="flex justify-center">
-          <ButtonLink href={siteConfig.links.github} variant="secondary" size="md">
-            <GitHubIcon className="h-4 w-4" />
-            See more on GitHub
+          <ButtonLink href="/projects" variant="secondary" size="md">
+            View all projects
+            <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </ButtonLink>
         </Reveal>
       </Container>

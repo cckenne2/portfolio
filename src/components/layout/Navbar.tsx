@@ -53,12 +53,12 @@ export function Navbar() {
         <ul className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 className="rounded-full px-4 py-2 text-sm font-medium text-muted transition-colors hover:text-fg"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -106,13 +106,13 @@ export function Navbar() {
         <ul className="flex flex-col gap-1 px-6 py-4">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className="block rounded-xl px-4 py-3 text-base font-medium text-muted transition-colors hover:bg-white/5 hover:text-fg"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
           <li className="mt-2 flex items-center gap-3 px-1">

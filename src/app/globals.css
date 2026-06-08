@@ -181,6 +181,28 @@ body {
   }
 }
 
+/* Data pulse that travels down architecture-flow connectors. */
+.flow-pulse {
+  animation: flow-down 2.4s ease-in-out infinite;
+}
+
+@keyframes flow-down {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(var(--flow-distance, 40px)));
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -192,7 +214,8 @@ body {
   }
   .animate-float,
   .animate-gradient,
-  .animate-glow {
+  .animate-glow,
+  .flow-pulse {
     animation: none !important;
   }
 }

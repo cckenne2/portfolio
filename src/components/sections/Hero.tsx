@@ -56,10 +56,10 @@ export function Hero() {
 
           <p className="max-w-2xl text-balance text-lg leading-relaxed text-muted sm:text-xl">
             I build <span className="font-medium text-fg">production AI and data systems</span>{" "}
-            that turn months of manual work into seconds — including a full-stack RAG application
-            demoed to the <span className="font-medium text-fg">CEO &amp; CFO and approved for
-            production</span>, an LLM pipeline that enriched 42,000+ records, and SQL/ETL powering
-            executive dashboards.
+            that turn months of manual work into seconds — including the{" "}
+            <span className="font-medium text-fg">Product Intelligence Engine</span>, a full-stack
+            RAG app demoed to the CEO &amp; CFO and approved for production, an LLM pipeline that
+            enriched 42,000+ records, and SQL/ETL powering executive dashboards.
           </p>
 
           {/* Primary CTAs */}
