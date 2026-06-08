@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { NeuralField } from "@/components/visuals/NeuralField";
@@ -32,27 +33,38 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
             </span>
-            Available for AI/ML &amp; Data Engineering roles
+            {siteConfig.location} · Open to AI/ML, Data &amp; Python roles
           </span>
 
-          <h1 className="text-pretty text-5xl font-semibold leading-[1.05] tracking-tight text-fg sm:text-6xl md:text-7xl">
-            {siteConfig.name}
-            <span className="mt-3 block bg-gradient-to-r from-cyan-300 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
-              AI/ML Engineer
-            </span>
-          </h1>
+          <div className="flex flex-col gap-4">
+            <h1 className="text-pretty text-5xl font-semibold leading-[1.05] tracking-tight text-fg sm:text-6xl md:text-7xl">
+              {siteConfig.name}
+              <span className="mt-3 block bg-gradient-to-r from-cyan-300 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
+                AI/ML Engineer
+              </span>
+            </h1>
+            {/* Broadened positioning — widens the funnel without diluting the lead */}
+            <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-base font-medium text-muted sm:text-lg">
+              {siteConfig.pillars.map((pillar, i) => (
+                <Fragment key={pillar}>
+                  {i > 0 && <span className="text-accent/70">·</span>}
+                  <span>{pillar}</span>
+                </Fragment>
+              ))}
+            </p>
+          </div>
 
           <p className="max-w-2xl text-balance text-lg leading-relaxed text-muted sm:text-xl">
-            I build <span className="font-medium text-fg">practical AI systems</span> — LLM
-            applications, RAG pipelines, and{" "}
-            <span className="font-medium text-fg">production data pipelines</span> — backed by
-            solid software engineering. From idea to deployment, I ship work that drives real
-            business impact.
+            I build <span className="font-medium text-fg">production AI and data systems</span>{" "}
+            that turn months of manual work into seconds — including a full-stack RAG application
+            demoed to the <span className="font-medium text-fg">CEO &amp; CFO and approved for
+            production</span>, an LLM pipeline that enriched 42,000+ records, and SQL/ETL powering
+            executive dashboards.
           </p>
 
           {/* Primary CTAs */}
           <div className="flex flex-wrap items-center gap-3">
-            <ButtonLink href="/projects" variant="primary" size="lg">
+            <ButtonLink href="#flagship" variant="primary" size="lg">
               View Projects
               <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </ButtonLink>
