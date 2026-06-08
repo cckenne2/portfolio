@@ -90,6 +90,12 @@ body {
     background-size: 58px 58px;
   }
 
+  /* Cyan halo that follows the logo's alpha silhouette (not a box). */
+  .logo-glow {
+    filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.5))
+      drop-shadow(0 0 13px rgba(56, 189, 248, 0.3));
+  }
+
   /* Frosted glass card surface. */
   .glass {
     background: linear-gradient(
@@ -181,6 +187,28 @@ body {
   }
 }
 
+/* Data pulse that travels down architecture-flow connectors. */
+.flow-pulse {
+  animation: flow-down 2.4s ease-in-out infinite;
+}
+
+@keyframes flow-down {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(var(--flow-distance, 40px)));
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -192,7 +220,8 @@ body {
   }
   .animate-float,
   .animate-gradient,
-  .animate-glow {
+  .animate-glow,
+  .flow-pulse {
     animation: none !important;
   }
 }

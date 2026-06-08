@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { navLinks, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import { buttonClass } from "@/components/ui/Button";
+import { BrandMark } from "@/components/layout/BrandMark";
 import { CloseIcon, FileTextIcon, GitHubIcon, MenuIcon } from "@/components/ui/icons";
 
 export function Navbar() {
@@ -36,29 +37,20 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 sm:px-8">
-        <Link
-          href="/"
-          className="group flex items-center gap-2.5"
-          aria-label={`${siteConfig.name} — home`}
-        >
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-cyan-300 to-indigo-500 text-sm font-bold text-ink shadow-[0_4px_20px_-4px_rgba(34,211,238,0.6)]">
-            CK
-          </span>
-          <span className="hidden text-sm font-semibold tracking-tight text-fg sm:block">
-            {siteConfig.name}
-          </span>
+        <Link href="/" className="flex items-center" aria-label={`${siteConfig.name} — home`}>
+          <BrandMark size={38} nameClassName="hidden sm:block" eager />
         </Link>
 
         {/* Desktop links */}
         <ul className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 className="rounded-full px-4 py-2 text-sm font-medium text-muted transition-colors hover:text-fg"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -106,13 +98,13 @@ export function Navbar() {
         <ul className="flex flex-col gap-1 px-6 py-4">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className="block rounded-xl px-4 py-3 text-base font-medium text-muted transition-colors hover:bg-white/5 hover:text-fg"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
           <li className="mt-2 flex items-center gap-3 px-1">

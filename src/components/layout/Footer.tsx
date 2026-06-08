@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { BrandMark } from "@/components/layout/BrandMark";
 import { navLinks, siteConfig } from "@/lib/site";
 import { GitHubIcon, LinkedInIcon, MailIcon } from "@/components/ui/icons";
 
@@ -14,11 +15,8 @@ export function Footer() {
     <footer className="relative border-t border-line/70 bg-ink-2/60">
       <Container className="flex flex-col gap-8 py-12 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-2">
-          <Link href="/" className="flex items-center gap-2.5 text-sm font-semibold text-fg">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-cyan-300 to-indigo-500 text-xs font-bold text-ink">
-              CK
-            </span>
-            {siteConfig.name}
+          <Link href="/" className="flex items-center" aria-label={`${siteConfig.name} — home`}>
+            <BrandMark size={32} />
           </Link>
           <p className="text-sm text-faint">
             {siteConfig.role} · Building practical AI &amp; data systems.
@@ -27,13 +25,13 @@ export function Footer() {
 
         <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm text-muted transition-colors hover:text-fg"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
