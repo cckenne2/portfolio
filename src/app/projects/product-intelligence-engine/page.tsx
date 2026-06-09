@@ -42,9 +42,9 @@ const challengeIcon: Record<ChallengeItem["icon"], typeof BoltIcon> = {
 };
 
 const capabilities = [
-  { title: "Semantic search", body: "Matches on meaning via embeddings, not just keywords." },
-  { title: "Grounded generation", body: "The model reasons only over real, retrieved catalog items." },
-  { title: "Sub-7-second response", body: "Fast enough to replace a manual lookup in the moment." },
+  { title: "Semantic search", body: "Understands product intent beyond keyword matching." },
+  { title: "Context-aware generation", body: "Builds recommendations from retrieved product information to improve accuracy." },
+  { title: "Production-ready performance", body: "Delivers intelligent product recommendations in seconds." },
 ];
 
 function StatStrip() {
@@ -141,7 +141,7 @@ export default function ProductIntelligenceEnginePage() {
       <CaseStudySection
         id="solution"
         eyebrow="The Solution"
-        title="An instant, grounded recommendation engine"
+        title="An instant, intelligent recommendation engine"
         intro={flagship.solution}
       >
         <div className="grid gap-5 sm:grid-cols-3">
@@ -161,7 +161,7 @@ export default function ProductIntelligenceEnginePage() {
         id="architecture"
         eyebrow="Architecture"
         title="How a request flows through the system"
-        intro="A retrieval-augmented pipeline: the query is encoded, semantically matched against the catalog, and used to ground a language model — so every recommendation traces back to a real product."
+        intro="The system finds relevant products based on a user's request, then uses them as context for generating the top recommendations."
       >
         <ArchitectureFlow stages={flagship.architecture} />
       </CaseStudySection>
@@ -171,7 +171,7 @@ export default function ProductIntelligenceEnginePage() {
         id="challenges"
         eyebrow="Engineering"
         title="Decisions & technical challenges"
-        intro="The interesting work wasn't calling an API — it was making recommendations trustworthy, relevant, and fast enough to use in real time."
+        intro="The challenging part wasn't calling an API. It was making the recommendations trustworthy, relevant, and fast enough to use in real time."
       >
         <div className="grid gap-5 sm:grid-cols-2">
           {flagship.challenges.map((challenge, i) => {

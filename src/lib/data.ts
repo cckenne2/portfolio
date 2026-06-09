@@ -68,23 +68,23 @@ export const flagship = {
   name: "Product Intelligence Engine",
   tagline: "AI-powered product discovery built on enterprise data.",
   summary:
-    "An independently built, full-stack RAG application that turns a slow manual product-lookup process into instant, grounded recommendations — demonstrated live to executive leadership and approved for production.",
+    "A full-stack RAG application that turns a slow, manual product-lookup process into instant educated recommendations. Demonstrated live to leadership, who backed it for production.",
   badges: ["Full-stack RAG", "Production-ready", "Independently built"],
   problem:
-    "Finding the right product for a customer meant manually searching through a large product database, or using generic LLM models that knew nothing about the actual products that are sold. It was a slow, repetitive, and error-prone process that didn't scale. The effort added up on every request, taking time away from actually helping customers.",
+    "Finding the right product for a customer meant manually searching through a large product database, or using generic LLM models that knew nothing about the actual products in the catalog. It was a slow, repetitive, and error-prone process that didn't scale. The effort added up on every request, taking time away from actually helping customers.",
   solution:
     "I independently designed and built a full-stack Retrieval-Augmented Generation (RAG) application that returns relevant product recommendations in less than seven seconds. It uses semantic search over an internal catalog with a tailored language model, turning a manual lookup into an instant, guided experience.",
   recognition:
     "A project I designed and built independently, from the vector search to the frontend. In a live demo, leadership saw enough to back it for production. The CEO and CFO were impressed by the relevance of the recommendations, the speed of the responses, and the potential to transform how sales teams work with customers.",
   // High-level pipeline shown on the dedicated case-study page.
   architecture: [
-    { kind: "user", tech: "User", role: "Sales rep", detail: "Enters a customer need or product query in plain language." },
-    { kind: "frontend", tech: "React Frontend", role: "Client UI", detail: "Captures the query and renders ranked, explainable recommendations." },
-    { kind: "api", tech: "Python API", role: "Orchestration", detail: "Coordinates the retrieval-augmented workflow end to end." },
-    { kind: "search", tech: "Embedding Search", role: "Semantic encoding", detail: "Encodes the query into a vector to match on meaning, not just keywords." },
+    { kind: "user", tech: "User", role: "Sales rep", detail: "Enters a customer's requirements or use-case in plain language." },
+    { kind: "frontend", tech: "React Frontend", role: "Client UI", detail: "Captures the request and renders ranked product recommendation cards." },
+    { kind: "api", tech: "Python API", role: "Orchestration", detail: "Coordinates the embedding & retrieval workflow." },
+    { kind: "search", tech: "Semantic Search", role: "Embedding encoding", detail: "Encodes the query into a vector to match based on context and intent." },
     { kind: "vector", tech: "Pinecone", role: "Vector retrieval", detail: "Returns the most semantically relevant product candidates from the index." },
-    { kind: "llm", tech: "Gemini", role: "Grounded generation", detail: "Reasons over the retrieved candidates to generate and justify recommendations." },
-    { kind: "output", tech: "Recommendation", role: "Response", detail: "Delivers ranked product recommendations in under seven seconds." },
+    { kind: "llm", tech: "Gemini", role: "Context-based generation", detail: "Reasons over the retrieved candidates to generate and justify recommendations." },
+    { kind: "output", tech: "Smart Recommendations", role: "Response", detail: "Delivers ranked product recommendations. All in under seven seconds." },
   ] as ArchStage[],
   // Condensed four-node view used by the homepage teaser.
   coreTech: [
@@ -109,33 +109,33 @@ export const flagship = {
   challenges: [
     {
       icon: "grounding",
-      title: "Grounding over guessing",
-      body: "Recommendations had to come from the real catalog, not the model's imagination. A retrieval-augmented design constrains the language model to actual retrieved candidates — the difference between a trustworthy tool and one that merely sounds plausible.",
+      title: "Evidence-based generation",
+      body: "Recommendations had to come from an actual catalog, not the model's imagination. Forcing the model to only use products retrieved from the catalog with strict constraints kept the output accurate and trustworthy, minimizing hallucinations.",
     },
     {
       icon: "retrieval",
       title: "Semantic retrieval quality",
-      body: "People describe needs in their own words. Encoding queries and products as embeddings lets the system match on meaning, surfacing the right products even when the wording doesn't line up with the catalog.",
+      body: "People describe needs in their own way. Encoding requests and products as embeddings lets the system match on overall meaning, allowing only the right products to be returned even when the wording doesn't always match the catalog exactly.",
     },
     {
       icon: "latency",
-      title: "A strict latency budget",
-      body: "To replace a manual lookup, the full retrieve-then-generate round trip had to feel instant. Balancing retrieval breadth against generation time kept the end-to-end workflow under seven seconds.",
+      title: "Minimizing latency",
+      body: "To replace a manual lookup, the full recommendation process had to feel instant. Balancing retrieval quality against generation time proved to be a major challenge. To improve the response time, I had to optimize every step of the pipeline, from caching embeddings to prompt design that kept the model's reasoning focused and fast.",
     },
     {
       icon: "prompt",
-      title: "Prompt design & grounding",
-      body: "The prompt structures how the model reasons over retrieved candidates, keeping output consistent, on-catalog, and explainable rather than free-associating.",
+      title: "Prompt design",
+      body: "The system-level prompts change how the model thinks when deciding potential candidates while keeping output consistent, explainable, and reliable.",
     },
     {
       icon: "ranking",
       title: "Relevance ranking",
-      body: "Returning the right products isn't enough — the most useful ones have to come first, so the top of the list is trustworthy at a glance.",
+      body: "Returning the right products isn't enough. The most useful ones have to come in order, and include confidence scores to increase trust.",
     },
     {
       icon: "production",
-      title: "Built for production, not a demo",
-      body: "Designed around a real workflow: graceful handling of vague queries, predictable behavior, and an interface a non-technical user could trust in front of a customer.",
+      title: "Built for production",
+      body: "Designed with real-world use cases in mind: sufficient handling of vague queries, predictable behavior, and an interface a non-technical user could easily learn with no training required.",
     },
   ] as ChallengeItem[],
   stats: [
