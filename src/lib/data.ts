@@ -14,29 +14,31 @@ export type Metric = {
   /** Rendered after the animated number, e.g. "+", "%", "s". */
   suffix?: string;
   label: string;
+  boldPortions?: string[];
 };
 
 export const metrics: Metric[] = [
   {
-    value: 42000,
-    suffix: "+",
-    label: "Product records enriched by an LLM pipeline — in 3 weeks",
-  },
-  {
-    value: 20000,
-    suffix: "+",
-    label: "Customer records deduplicated at 90% accuracy",
+    value: 10,
+    suffix: "+ min",
+    label: "Spent performing manual catalog lookups per inquiry",
   },
   {
     value: 7,
     prefix: "<",
     suffix: "s",
-    label: "Per-product RAG recommendation, replacing manual catalog lookup",
+    label: "Per request with the Product Intelligence Engine, which includes product context and comparisons",
+    boldPortions: ["Product Intelligence Engine"],
   },
   {
-    value: 3,
+    value: 42000,
     suffix: "+",
-    label: "Data sources unified into executive Power BI dashboards",
+    label: "Product records enriched by an LLM pipeline in 3 days, and built in 3 weeks",
+  },
+  {
+    value: 20000,
+    suffix: "+",
+    label: "Customer records deduplicated with 90% accuracy",
   },
 ];
 
