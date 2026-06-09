@@ -68,7 +68,7 @@ export function FlagshipProject() {
                   </div>
                   <div className="rounded-2xl border border-accent/20 bg-accent/[0.06] p-4">
                     <h3 className="mb-1 text-sm font-semibold text-accent">
-                      Executive approval &amp; recognition
+                      Validated by leadership
                     </h3>
                     <p className="text-pretty text-sm leading-relaxed text-muted">
                       {flagship.recognition}
@@ -79,7 +79,7 @@ export function FlagshipProject() {
                 {/* Condensed stack */}
                 <div className="flex flex-col gap-4 lg:col-span-2">
                   <h3 className="text-sm font-semibold uppercase tracking-wider text-faint">
-                    Core stack
+                    Core technologies
                   </h3>
                   <div className="flex flex-col gap-2 rounded-2xl border border-line/70 bg-ink/40 p-4">
                     {flagship.coreTech.map((stage, i) => (

@@ -66,16 +66,16 @@ export type ChallengeItem = TitledItem & { icon: "grounding" | "retrieval" | "la
 export const flagship = {
   slug: "product-intelligence-engine",
   name: "Product Intelligence Engine",
-  tagline: "Retrieval-augmented product recommendations, built end to end.",
+  tagline: "AI-powered product discovery built on enterprise data.",
   summary:
     "An independently built, full-stack RAG application that turns a slow manual product-lookup process into instant, grounded recommendations — demonstrated live to executive leadership and approved for production.",
-  badges: ["Full-stack RAG", "Executive-approved", "Independently built"],
+  badges: ["Full-stack RAG", "Production-ready", "Independently built"],
   problem:
-    "Finding the right product for a customer meant working through a large catalog by hand — a slow, repetitive lookup that didn't scale and was easy to get wrong. The effort added up on every request and pulled time away from actually helping customers.",
+    "Finding the right product for a customer meant manually searching through a large product database, or using generic LLM models that knew nothing about the actual products that are sold. It was a slow, repetitive, and error-prone process that didn't scale. The effort added up on every request, taking time away from actually helping customers.",
   solution:
-    "I independently designed and built a full-stack Retrieval-Augmented Generation (RAG) application that returns relevant product recommendations in under seven seconds. It pairs semantic vector search over the catalog with a grounded language model, turning a manual lookup into an instant, guided experience.",
+    "I independently designed and built a full-stack Retrieval-Augmented Generation (RAG) application that returns relevant product recommendations in less than seven seconds. It uses semantic search over an internal catalog with a tailored language model, turning a manual lookup into an instant, guided experience.",
   recognition:
-    "Demonstrated live to executive leadership — the CEO and CFO — the system earned approval for production deployment and was recognized in a Q1 2026 IT review for its initiative and completion.",
+    "A project I designed and built independently, from the vector search to the frontend. In a live demo, leadership saw enough to back it for production. The CEO and CFO were impressed by the relevance of the recommendations, the speed of the responses, and the potential to transform how sales teams work with customers.",
   // High-level pipeline shown on the dedicated case-study page.
   architecture: [
     { kind: "user", tech: "User", role: "Sales rep", detail: "Enters a customer need or product query in plain language." },
@@ -89,11 +89,11 @@ export const flagship = {
   // Condensed four-node view used by the homepage teaser.
   coreTech: [
     { tech: "React", role: "Frontend UI" },
-    { tech: "Python", role: "Backend / API" },
+    { tech: "Python", role: "Backend / API / Embeddings" },
     { tech: "Pinecone", role: "Vector retrieval" },
     { tech: "Gemini", role: "LLM generation" },
   ],
-  stack: ["React", "Python", "Pinecone", "Gemini", "RAG", "Vector Search"],
+  stack: ["React", "Python", "Pinecone", "Gemini", "RAG", "Prompt Engineering", "Semantic Search", "Grounding", "Latency Optimization"],
   stackGroups: [
     { title: "Frontend", items: ["React"] },
     { title: "Backend", items: ["Python", "REST API"] },
@@ -139,10 +139,10 @@ export const flagship = {
     },
   ] as ChallengeItem[],
   stats: [
-    { value: "< 7s", label: "End-to-end recommendation workflow" },
+    { value: "< 7s", label: "Recommendation workflow, from prompt to results" },
     { value: "CEO + CFO", label: "Live executive demonstration" },
-    { value: "Approved", label: "Greenlit for production deployment" },
-    { value: "0 → 1", label: "Independently designed & built" },
+    { value: "Backed", label: "Endorsed for production after the demo" },
+    { value: "42,000+", label: "Products the system was designed to search" },
   ] as FlagshipStat[],
   results: [
     "Replaced a slow, manual product-lookup process with an instant, guided experience.",
@@ -194,7 +194,7 @@ export const flagship = {
     body: "The Product Intelligence Engine runs on confidential business data, so it isn't publicly hosted. A guided walkthrough — or a sandboxed demo on synthetic data — is available on request.",
     cta: "Request demo access",
   },
-  note: "Independently designed and built by Caleb. Business-specific details and datasets are kept confidential.",
+  note: "Independently designed and built by Caleb Kennedy. Business-specific details and datasets are kept entirely confidential.",
 };
 
 export type ProjectCategory = "Professional Case Study" | "Public Project";
