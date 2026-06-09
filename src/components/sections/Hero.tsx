@@ -56,10 +56,11 @@ export function Hero() {
 
           <p className="max-w-2xl text-balance text-lg leading-relaxed text-muted sm:text-xl">
             I build <span className="font-medium text-fg">production AI and data systems</span>{" "}
-            that turn months of manual work into seconds — including the{" "}
+            that turn months of manual work into seconds, including the{" "}
             <span className="font-medium text-fg">Product Intelligence Engine</span>, a full-stack
-            RAG app demoed to the CEO &amp; CFO and approved for production, an LLM pipeline that
-            enriched 42,000+ records, and SQL/ETL powering executive dashboards.
+            RAG app I independently designed and built to provide ranked product recommendations 
+            in under 7 seconds. Other major contributions include an LLM pipeline that enriched 42,000+ 
+            product records, and automated ETL workflows supporting a NetSuite ERP migration.
           </p>
 
           {/* Primary CTAs */}
