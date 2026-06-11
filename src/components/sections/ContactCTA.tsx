@@ -31,7 +31,7 @@ export function ContactCTA() {
 
               <p className="max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
                 I&apos;m open to AI/ML and data engineering roles and collaborations. If you have a
-                problem worth solving, I&apos;d love to hear about it.
+                problem that needs solving, I&apos;'d love to hear about it.
               </p>
 
               <div className="mt-2 flex flex-wrap items-center justify-center gap-3">

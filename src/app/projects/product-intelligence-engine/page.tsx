@@ -225,7 +225,6 @@ export default function ProductIntelligenceEnginePage() {
         id="results"
         eyebrow="Impact"
         title="Results & impact"
-        intro="Built independently, validated by leadership, and aimed squarely at a real operational cost."
       >
         <div className="flex flex-col gap-6">
           <Reveal>
@@ -251,13 +250,14 @@ export default function ProductIntelligenceEnginePage() {
       <CaseStudySection
         id="demo"
         eyebrow="Live Demo"
-        title="Try it — by request"
-        intro="An honest note on access, rather than a fake demo."
+        title="Try it by request"
+        intro="See how the recommendation engine works with realistic sample data."
       >
         <DemoAccess />
       </CaseStudySection>
-
-      {/* Lessons Learned */}
+      
+      {/*
+      // Lessons Learned 
       <CaseStudySection
         id="lessons"
         eyebrow="Reflection"
@@ -276,7 +276,7 @@ export default function ProductIntelligenceEnginePage() {
         </div>
       </CaseStudySection>
 
-      {/* Future Roadmap */}
+      // Future Roadmap 
       <CaseStudySection
         id="roadmap"
         eyebrow="What's next"
@@ -299,6 +299,7 @@ export default function ProductIntelligenceEnginePage() {
           ))}
         </ol>
       </CaseStudySection>
+      */}
 
       {/* Confidentiality note */}
       <Container>
@@ -307,7 +308,6 @@ export default function ProductIntelligenceEnginePage() {
           {flagship.note}
         </p>
       </Container>
-
       <ContactCTA />
     </>
   );

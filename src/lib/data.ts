@@ -145,12 +145,12 @@ export const flagship = {
     { value: "42,000+", label: "Products the system was designed to search" },
   ] as FlagshipStat[],
   results: [
-    "Replaced a slow, manual product-lookup process with an instant, guided experience.",
-    "Returns ranked recommendations in under seven seconds, end to end.",
-    "Demonstrated live to executive leadership — the CEO and CFO.",
-    "Approved for production deployment following the demonstration.",
-    "Significantly reduced manual product-lookup effort.",
-    "Full-stack ownership: designed and built across React, Python, Pinecone, and Gemini.",
+    "Replaces a manual lookup process with instant AI-assisted recommendations.",
+    "Returns ranked product recommendations with explanations and confidence scores.",
+    "Supports both freeform prompts and guided input forms for different types of users.",
+    "Demonstrated live to executive leadership and approved for production.",
+    "Built to provide consistent recommendations across a large evolving product catalog.",
+    "Full-stack ownership: designed and built independently across React, Python, Pinecone, and Gemini.",
   ],
   lessons: [
     {
@@ -190,8 +190,8 @@ export const flagship = {
   ] as TitledItem[],
   demo: {
     status: "In development",
-    headline: "Private by design",
-    body: "The Product Intelligence Engine runs on confidential business data, so it isn't publicly hosted. A guided walkthrough — or a sandboxed demo on synthetic data — is available on request.",
+    headline: "Interactive Demo",
+    body: "I'm currently building a sandbox version of the Product Intelligence Engine using synthetic data. Over time, I'll be adding additional datasets for different industries to show how the same retrieval and recommendation architecture can be applied to different industries.",
     cta: "Request demo access",
   },
   note: "Independently designed and built by Caleb Kennedy. Business-specific details and datasets are kept entirely confidential.",
