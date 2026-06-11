@@ -42,9 +42,9 @@ const challengeIcon: Record<ChallengeItem["icon"], typeof BoltIcon> = {
 };
 
 const capabilities = [
-  { title: "Semantic search", body: "Matches on meaning via embeddings, not just keywords." },
-  { title: "Grounded generation", body: "The model reasons only over real, retrieved catalog items." },
-  { title: "Sub-7-second response", body: "Fast enough to replace a manual lookup in the moment." },
+  { title: "Semantic search", body: "Finds relevant products based on usage and context rather than exact keyword matches." },
+  { title: "Context-aware generation", body: "Builds recommendations using retrieved product data to improve accuracy and reliability." },
+  { title: "Production-ready performance", body: "Delivers product recommendations in a matter of seconds and is suitable for live customer interactions." },
 ];
 
 function StatStrip() {
@@ -133,7 +133,7 @@ export default function ProductIntelligenceEnginePage() {
       <CaseStudySection
         id="problem"
         eyebrow="The Problem"
-        title="Manual product lookup didn't scale"
+        title="Manual product lookup doesn't scale"
         intro={flagship.problem}
       />
 
@@ -141,7 +141,7 @@ export default function ProductIntelligenceEnginePage() {
       <CaseStudySection
         id="solution"
         eyebrow="The Solution"
-        title="An instant, grounded recommendation engine"
+        title="An instant, intelligent recommendation engine"
         intro={flagship.solution}
       >
         <div className="grid gap-5 sm:grid-cols-3">
@@ -161,7 +161,7 @@ export default function ProductIntelligenceEnginePage() {
         id="architecture"
         eyebrow="Architecture"
         title="How a request flows through the system"
-        intro="A retrieval-augmented pipeline: the query is encoded, semantically matched against the catalog, and used to ground a language model — so every recommendation traces back to a real product."
+        intro="The system retrieves products from the catalog that are similar to the user's request, then uses AI to rank, explain, and recommend the top matches."
       >
         <ArchitectureFlow stages={flagship.architecture} />
       </CaseStudySection>
@@ -171,7 +171,7 @@ export default function ProductIntelligenceEnginePage() {
         id="challenges"
         eyebrow="Engineering"
         title="Decisions & technical challenges"
-        intro="The interesting work wasn't calling an API — it was making recommendations trustworthy, relevant, and fast enough to use in real time."
+        intro="Getting the system to return products wasn't particularly difficult, and the first versions already worked fairly well. Most of the engineering effort went into improving recommendation quality, ensuring consistent results, and keeping the response times low enough for real-world use."
       >
         <div className="grid gap-5 sm:grid-cols-2">
           {flagship.challenges.map((challenge, i) => {
@@ -195,8 +195,7 @@ export default function ProductIntelligenceEnginePage() {
       <CaseStudySection
         id="stack"
         eyebrow="Stack"
-        title="Technology stack"
-        intro="A focused, production-minded stack — React and Python around a retrieval-augmented core."
+        title="Core Technologies"
       >
         <div className="grid gap-5 sm:grid-cols-2">
           {flagship.stackGroups.map((group, i) => (
@@ -226,7 +225,6 @@ export default function ProductIntelligenceEnginePage() {
         id="results"
         eyebrow="Impact"
         title="Results & impact"
-        intro="Built independently, validated by leadership, and aimed squarely at a real operational cost."
       >
         <div className="flex flex-col gap-6">
           <Reveal>
@@ -252,13 +250,14 @@ export default function ProductIntelligenceEnginePage() {
       <CaseStudySection
         id="demo"
         eyebrow="Live Demo"
-        title="Try it — by request"
-        intro="An honest note on access, rather than a fake demo."
+        title="Try it by request"
+        intro="See how the recommendation engine works with realistic sample data."
       >
         <DemoAccess />
       </CaseStudySection>
-
-      {/* Lessons Learned */}
+      
+      {/*
+      // Lessons Learned 
       <CaseStudySection
         id="lessons"
         eyebrow="Reflection"
@@ -277,7 +276,7 @@ export default function ProductIntelligenceEnginePage() {
         </div>
       </CaseStudySection>
 
-      {/* Future Roadmap */}
+      // Future Roadmap 
       <CaseStudySection
         id="roadmap"
         eyebrow="What's next"
@@ -300,6 +299,7 @@ export default function ProductIntelligenceEnginePage() {
           ))}
         </ol>
       </CaseStudySection>
+      */}
 
       {/* Confidentiality note */}
       <Container>
@@ -308,7 +308,6 @@ export default function ProductIntelligenceEnginePage() {
           {flagship.note}
         </p>
       </Container>
-
       <ContactCTA />
     </>
   );
