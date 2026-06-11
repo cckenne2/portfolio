@@ -15,7 +15,7 @@ export function Hero() {
   return (
     <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-16">
       {/* Animated neural-network field */}
-      <NeuralField className="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-70" />
+      <NeuralField className="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-85" />
       {/* Engineering grid + vignette so headline text stays legible */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(120%_90%_at_50%_0%,#000_30%,transparent_75%)]" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-ink/30 to-ink" />
@@ -56,10 +56,14 @@ export function Hero() {
 
           <p className="max-w-2xl text-balance text-lg leading-relaxed text-muted sm:text-xl">
             I build <span className="font-medium text-fg">production AI and data systems</span>{" "}
-            that turn months of manual work into seconds — including the{" "}
-            <span className="font-medium text-fg">Product Intelligence Engine</span>, a full-stack
-            RAG app demoed to the CEO &amp; CFO and approved for production, an LLM pipeline that
-            enriched 42,000+ records, and SQL/ETL powering executive dashboards.
+            that turn months of manual work into seconds, including the{" "}
+            <span className="font-medium text-fg">Product Intelligence Engine</span>: a full-stack
+            RAG app I independently designed and built to provide ranked product recommendations 
+            in under 7 seconds.
+          </p>
+          <p className="max-w-2xl text-balance text-lg leading-relaxed text-muted sm:text-xl">
+            Other major contributions include an LLM pipeline that enriched 42,000+ 
+            product records, an address deduplication system, and automated ETL workflows supporting a NetSuite ERP migration.
           </p>
 
           {/* Primary CTAs */}

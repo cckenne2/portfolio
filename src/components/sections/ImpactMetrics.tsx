@@ -22,7 +22,19 @@ export function ImpactMetrics() {
                     <CountUp to={metric.value} prefix={metric.prefix} suffix={metric.suffix} />
                   </span>
                   <span className="mt-3 block text-sm leading-snug text-muted">
-                    {metric.label}
+                    {metric.boldPortions ? (
+                      <>
+                        {metric.label.split(new RegExp(`(${metric.boldPortions.join('|')})`)).map((part, i) =>
+                          metric.boldPortions?.includes(part) ? (
+                            <strong key={i}>{part}</strong>
+                          ) : (
+                            <span key={i}>{part}</span>
+                          )
+                        )}
+                      </>
+                    ) : (
+                      metric.label
+                    )}
                   </span>
                 </dd>
               </div>
