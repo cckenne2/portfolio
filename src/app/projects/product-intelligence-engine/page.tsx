@@ -42,9 +42,9 @@ const challengeIcon: Record<ChallengeItem["icon"], typeof BoltIcon> = {
 };
 
 const capabilities = [
-  { title: "Semantic search", body: "Understands product intent beyond keyword matching." },
-  { title: "Context-aware generation", body: "Builds recommendations from retrieved product information to improve accuracy." },
-  { title: "Production-ready performance", body: "Delivers intelligent product recommendations in seconds." },
+  { title: "Semantic search", body: "Finds relevant products based on usage and context rather than exact keyword matches." },
+  { title: "Context-aware generation", body: "Builds recommendations using retrieved product data to improve accuracy and reliability." },
+  { title: "Production-ready performance", body: "Delivers product recommendations in a matter of seconds and is suitable for live customer interactions." },
 ];
 
 function StatStrip() {
@@ -133,7 +133,7 @@ export default function ProductIntelligenceEnginePage() {
       <CaseStudySection
         id="problem"
         eyebrow="The Problem"
-        title="Manual product lookup didn't scale"
+        title="Manual product lookup doesn't scale"
         intro={flagship.problem}
       />
 
@@ -161,7 +161,7 @@ export default function ProductIntelligenceEnginePage() {
         id="architecture"
         eyebrow="Architecture"
         title="How a request flows through the system"
-        intro="The system finds relevant products based on a user's request, then uses them as context for generating the top recommendations."
+        intro="The system retrieves products from the catalog that are similar to the user's request, then uses AI to rank, explain, and recommend the top matches."
       >
         <ArchitectureFlow stages={flagship.architecture} />
       </CaseStudySection>
@@ -171,7 +171,7 @@ export default function ProductIntelligenceEnginePage() {
         id="challenges"
         eyebrow="Engineering"
         title="Decisions & technical challenges"
-        intro="The challenging part wasn't calling an API. It was making the recommendations trustworthy, relevant, and fast enough to use in real time."
+        intro="Getting the system to return products wasn't particularly difficult, and the first versions already worked fairly well. Most of the engineering effort went into improving recommendation quality, ensuring consistent results, and keeping the response times low enough for real-world use."
       >
         <div className="grid gap-5 sm:grid-cols-2">
           {flagship.challenges.map((challenge, i) => {
@@ -195,8 +195,7 @@ export default function ProductIntelligenceEnginePage() {
       <CaseStudySection
         id="stack"
         eyebrow="Stack"
-        title="Technology stack"
-        intro="A focused, production-minded stack — React and Python around a retrieval-augmented core."
+        title="Core Technologies"
       >
         <div className="grid gap-5 sm:grid-cols-2">
           {flagship.stackGroups.map((group, i) => (
