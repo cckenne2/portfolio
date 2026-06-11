@@ -68,23 +68,23 @@ export const flagship = {
   name: "Product Intelligence Engine",
   tagline: "AI-powered product discovery built on enterprise data.",
   summary:
-    "An independently built, full-stack RAG application that turns a slow manual product-lookup process into instant, grounded recommendations — demonstrated live to executive leadership and approved for production.",
+    "An intelligent product recommendation system built in React and powered by AI. Designed to help users find the right products for customers in seconds using enterprise product data. Demonstrated live to executive leadership who backed the project for production.",
   badges: ["Full-stack RAG", "Production-ready", "Independently built"],
   problem:
-    "Finding the right product for a customer meant manually searching through a large product database, or using generic LLM models that knew nothing about the actual products that are sold. It was a slow, repetitive, and error-prone process that didn't scale. The effort added up on every request, taking time away from actually helping customers.",
+    "Finding the right products for customers often requires manually searching large product catalogs or relying on AI tools that lack access to company-specific product data. It's a slow and repetetive process that doesn't scale well and is difficult to automate. The effort adds up on every request, taking away time from actually helping customers.",
   solution:
-    "I independently designed and built a full-stack Retrieval-Augmented Generation (RAG) application that returns relevant product recommendations in less than seven seconds. It uses semantic search over an internal catalog with a tailored language model, turning a manual lookup into an instant, guided experience.",
+    "I designed and built a retrieval-augmented recommendation engine in React that returns relevant product recommendations in less than seven seconds. It searches internal product catalogs semantically and transforms a manual lookup process into one that is instant and reliable.",
   recognition:
     "A project I designed and built independently, from the vector search to the frontend. In a live demo, leadership saw enough to back it for production. The CEO and CFO were impressed by the relevance of the recommendations, the speed of the responses, and the potential to transform how sales teams work with customers.",
   // High-level pipeline shown on the dedicated case-study page.
   architecture: [
-    { kind: "user", tech: "User", role: "Sales rep", detail: "Enters a customer need or product query in plain language." },
-    { kind: "frontend", tech: "React Frontend", role: "Client UI", detail: "Captures the query and renders ranked, explainable recommendations." },
-    { kind: "api", tech: "Python API", role: "Orchestration", detail: "Coordinates the retrieval-augmented workflow end to end." },
-    { kind: "search", tech: "Embedding Search", role: "Semantic encoding", detail: "Encodes the query into a vector to match on meaning, not just keywords." },
-    { kind: "vector", tech: "Pinecone", role: "Vector retrieval", detail: "Returns the most semantically relevant product candidates from the index." },
-    { kind: "llm", tech: "Gemini", role: "Grounded generation", detail: "Reasons over the retrieved candidates to generate and justify recommendations." },
-    { kind: "output", tech: "Recommendation", role: "Response", detail: "Delivers ranked product recommendations in under seven seconds." },
+    { kind: "user", tech: "User", role: "Sales rep", detail: "Enters a customer's requirements or use-case in plain language." },
+    { kind: "frontend", tech: "React Frontend", role: "Client UI", detail: "Captures the request and renders ranked product recommendation cards." },
+    { kind: "api", tech: "Python API", role: "Orchestration", detail: "Coordinates the embedding & retrieval workflow." },
+    { kind: "search", tech: "Embedding Generation", role: "Query embedding", detail: "Encodes the user's request into a vector to prepare for semantic search." },
+    { kind: "vector", tech: "Pinecone", role: "Vector retrieval", detail: "Returns the most semantically similar product candidates from the catalog." },
+    { kind: "llm", tech: "Gemini", role: "Context-based generation", detail: "Reasons over the retrieved products to identify the closest matches." },
+    { kind: "output", tech: "Smart Recommendations", role: "Response", detail: "Delivers the top results with explanations and confidence scores." },
   ] as ArchStage[],
   // Condensed four-node view used by the homepage teaser.
   coreTech: [
@@ -95,47 +95,47 @@ export const flagship = {
   ],
   stack: ["React", "Python", "Pinecone", "Gemini", "RAG", "Prompt Engineering", "Semantic Search", "Grounding", "Latency Optimization"],
   stackGroups: [
-    { title: "Frontend", items: ["React"] },
-    { title: "Backend", items: ["Python", "REST API"] },
+    { title: "User Interface", items: ["React", "Responsive UI", "Recommendation Cards", "Guided Input Forms", "Freeform Text Prompts"] },
+    { title: "Orchestration Layer", items: ["Python", "FastAPI", "REST API", "Request Orchestration"] },
     {
       title: "AI & Retrieval",
-      items: ["Gemini (LLM)", "Pinecone (Vector DB)", "Embeddings", "RAG", "Semantic Search"],
+      items: ["Gemini API", "Pinecone", "Semantic Search", "RAG", "Embedding Generation"],
     },
     {
       title: "Engineering Practices",
-      items: ["Prompt Design", "Relevance Ranking", "Grounding", "Latency Optimization"],
+      items: ["Prompt Engineering & Design", "Grounded Generation", "Relevance Ranking", "Latency Optimization"],
     },
   ] as SkillGroup[],
   challenges: [
     {
       icon: "grounding",
-      title: "Grounding over guessing",
-      body: "Recommendations had to come from the real catalog, not the model's imagination. A retrieval-augmented design constrains the language model to actual retrieved candidates — the difference between a trustworthy tool and one that merely sounds plausible.",
+      title: "Evidence-based generation",
+      body: "Recommendations had to come from an actual catalog, not the model's imagination. Forcing the model to only use products retrieved from the catalog with strict constraints kept the output accurate and trustworthy, minimizing hallucinations.",
     },
     {
       icon: "retrieval",
       title: "Semantic retrieval quality",
-      body: "People describe needs in their own words. Encoding queries and products as embeddings lets the system match on meaning, surfacing the right products even when the wording doesn't line up with the catalog.",
+      body: "Customers rarely describe products using the exact same language found in a catalog or database. Embeddings allows the system match on overall meaning, helping surface relevant products even when terminology differs.",
     },
     {
       icon: "latency",
-      title: "A strict latency budget",
-      body: "To replace a manual lookup, the full retrieve-then-generate round trip had to feel instant. Balancing retrieval breadth against generation time kept the end-to-end workflow under seven seconds.",
+      title: "Minimizing latency",
+      body: "Balancing retrieval quality against generation time proved to be a major challenge. Improving response times required optimizing every stage of the pipeline, from embedding generation to retrieval, prompt design, and caching techniques.",
     },
     {
       icon: "prompt",
-      title: "Prompt design & grounding",
-      body: "The prompt structures how the model reasons over retrieved candidates, keeping output consistent, on-catalog, and explainable rather than free-associating.",
+      title: "Prompt design",
+      body: "Carefully designed system prompts force the model to compare products using the same evaluation criteria each time, keeping outputs consistent with reduced variability between requests.",
     },
     {
       icon: "ranking",
       title: "Relevance ranking",
-      body: "Returning the right products isn't enough — the most useful ones have to come first, so the top of the list is trustworthy at a glance.",
+      body: "Returning relevant products isn't enough. The most useful ones have to come in order, and include confidence scores to increase trust.",
     },
     {
       icon: "production",
-      title: "Built for production, not a demo",
-      body: "Designed around a real workflow: graceful handling of vague queries, predictable behavior, and an interface a non-technical user could trust in front of a customer.",
+      title: "Built for production",
+      body: "Users won't always search with perfect terminology, so the system was built to handle ambiguous requests while remaining simple enough for non-technical people to use with minimal training.",
     },
   ] as ChallengeItem[],
   stats: [
@@ -145,12 +145,12 @@ export const flagship = {
     { value: "42,000+", label: "Products the system was designed to search" },
   ] as FlagshipStat[],
   results: [
-    "Replaced a slow, manual product-lookup process with an instant, guided experience.",
-    "Returns ranked recommendations in under seven seconds, end to end.",
-    "Demonstrated live to executive leadership — the CEO and CFO.",
-    "Approved for production deployment following the demonstration.",
-    "Significantly reduced manual product-lookup effort.",
-    "Full-stack ownership: designed and built across React, Python, Pinecone, and Gemini.",
+    "Replaces a manual lookup process with instant AI-assisted recommendations.",
+    "Returns ranked product recommendations with explanations and confidence scores.",
+    "Supports both freeform prompts and guided input forms for different types of users.",
+    "Demonstrated live to executive leadership and approved for production.",
+    "Built to provide consistent recommendations across a large evolving product catalog.",
+    "Full-stack ownership: designed and built independently across React, Python, Pinecone, and Gemini.",
   ],
   lessons: [
     {
@@ -190,8 +190,8 @@ export const flagship = {
   ] as TitledItem[],
   demo: {
     status: "In development",
-    headline: "Private by design",
-    body: "The Product Intelligence Engine runs on confidential business data, so it isn't publicly hosted. A guided walkthrough — or a sandboxed demo on synthetic data — is available on request.",
+    headline: "Interactive Demo",
+    body: "I'm currently building a sandbox version of the Product Intelligence Engine using synthetic data. Over time, I'll be adding additional datasets for different industries to show how the same retrieval and recommendation architecture can be applied to different industries.",
     cta: "Request demo access",
   },
   note: "Independently designed and built by Caleb Kennedy. Business-specific details and datasets are kept entirely confidential.",
